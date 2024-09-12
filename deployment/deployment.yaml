@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-app
+  labels:
+    app: django-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: django-app
+  template:
+    metadata:
+      labels:
+        app: django-app
+    spec:
+      containers:
+      - name: django-container
+        image: django-app-image:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DJANGO_SETTINGS_MODULE
+          value: "loginproject.settings"
+        - name: SECRET_KEY
+          value: "django-insecure-o%=r^b2)pp&x*=&-6ot_tiki6zul_z%p-e6^iam0c2ceb-oad_"
+        - name: ALLOWED_HOSTS
+          value: "0.0.0.0"
