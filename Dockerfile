@@ -1,5 +1,3 @@
-# Dockerfile
-
 # Use official Python image
 FROM python:3.9-slim
 
@@ -21,4 +19,4 @@ COPY . /app/
 EXPOSE 8000
 
 # Run the Django development server
-CMD ["python", "manage.py", "runserver",
+CMD ["python", "manage.py", "runserver"]
